@@ -21,25 +21,24 @@ DIGIT [0-9]
 
     using namespace std; 
      
-    string currentString; 
-    string currentCommentString;
-    double currentFloat; 
-    int currentInteger;
-    char currentCharacter;
-    int octothorpeCount = 0;   
-    char buffer[10];
-%} 
- 
-%% 
- 
-%{ 
     void removeCharacterFromString(string& str, char ch); 
     void removeSubstringFromString(string& str, const string& substr);
     void convertCharacterCodeToString(char characterCode[], int startPosition, char *result); 
 %} 
  
+%% 
+ 
+%{ 
+    string currentString; 
+    string currentCommentString;
+    double currentFloat; 
+    int currentInteger;
+    char currentCharacter;
+    int octothorpeCount = 0;     
+%} 
+ 
 \n { } 
-" " { } 
+\s { } 
  
 as { cout << "Found KW_AS: " << yytext << endl; } 
 break { cout << "Found KW_BREAK: " << yytext << endl; } 
@@ -152,7 +151,7 @@ char { cout << "Found TYPE_CHAR: " << yytext << endl; }
  <ML_COMMENT>"*"+"/" { cout << "Found ML_COMMENT: " << currentCommentString << endl; BEGIN(INITIAL); } 
  <ML_COMMENT><<EOF>> { cout << "ML_COMMENT Error\n"; BEGIN(INITIAL);} 
  
- \/\/[^\n]* { cout << "Found COMMENT: " << string{yytext + 2} << endl; } 
+ \/\/.* { cout << "Found COMMENT: " << string{yytext + 2} << endl; } 
  
 \" { currentString.clear(); BEGIN(STRING); } 
 <STRING>[^\\\"\n]+ { currentString += yytext; } 
@@ -163,14 +162,12 @@ char { cout << "Found TYPE_CHAR: " << yytext << endl; }
 <STRING>\\0 { currentString += "\0"; } 
 <STRING>\\\\ { currentString += "\\"; } 
 <STRING>\\\" { currentString += "\""; } 
-<STRING>\\u\{(([0-9A-Fa-f]){1}_*){1,6}\} { 
-    int x = strtol(yytext + 3,NULL, 16);  
-    char tmp[2]; 
-    tmp[0] = x; 
-    tmp[1] = 0; 
-    currentString += tmp;   
+<STRING>\\u\{(([0-9A-Fa-f])_*){1,6}\} { 
+    char result[2]; 
+    convertCharacterCodeToString(yytext, 3, result);   
+    currentString += result;     
 } 
-<STRING>\\x[0-7][a-zA-Z0-9] { 
+<STRING>\\x[0-7][a-fA-F0-9] { 
     char result[2]; 
     convertCharacterCodeToString(yytext, 2, result);   
     currentString += result;    
@@ -179,19 +176,20 @@ char { cout << "Found TYPE_CHAR: " << yytext << endl; }
 <STRING><<EOF>> { cout << "STRING Error: there is no closing quotation mark\n"; BEGIN(INITIAL);} 
  
 r(#*)\" {currentString.clear(); octothorpeCount = strlen(yytext) - 2; BEGIN(SHIELD_STRING);} 
-<SHIELD_STRING>[^\"\n]+ { currentString += yytext; } 
-<SHIELD_STRING>\n { } 
+<SHIELD_STRING>[^\"]+ { currentString += yytext; } 
 <SHIELD_STRING>\"#* { 
-    int tmp  = strlen(yytext) - 1; 
-    if(tmp == octothorpeCount) 
-    { 
-        cout << "Found STRING: " << currentString << endl; BEGIN(INITIAL); 
+    int closingOctothorpeCount = strlen(yytext) - 1; 
+    if (closingOctothorpeCount == octothorpeCount) { 
+        cout << "Found STRING: " << currentString << endl; 
+        BEGIN(INITIAL); 
     } 
-    else 
-    { 
-         currentString += yytext; 
+    else if (closingOctothorpeCount < octothorpeCount) { 
+        currentString += yytext; 
     } 
- 
+    else {        
+        cout << "SHIELD_STRING Error: invalid closing sequence with too many octothorpes\n"; 
+        BEGIN(INITIAL); 
+    } 
 } 
 <SHIELD_STRING><<EOF>> { cout << "SHIELD_STRING Error: there is no closing quotation mark\n"; BEGIN(INITIAL);} 
  
@@ -211,12 +209,10 @@ r(#*)\" {currentString.clear(); octothorpeCount = strlen(yytext) - 2; BEGIN(SHIE
 <CHAR>\\0 {  currentString += "\0" ; } 
 <CHAR>\\\' {  currentString += "\'"; } 
 <CHAR>\\\" {  currentString += "\""; } 
-<CHAR>\\u\{(([0-9A-Fa-f]){1}_*){1,6}\} { 
-    int x = strtol(yytext + 3,NULL, 16);  
-    char tmp[2]; 
-    tmp[0] = x; 
-    tmp[1] = 0; 
-    currentString += tmp;   
+<CHAR>\\u\{(([0-9A-Fa-f])_*){1,6}\} { 
+    char result[2]; 
+    convertCharacterCodeToString(yytext, 3, result);   
+    currentString += result;    
 } 
 <CHAR>\' { 
     if(currentString.size() == 1) { 
@@ -279,7 +275,7 @@ r(#*)\" {currentString.clear(); octothorpeCount = strlen(yytext) - 2; BEGIN(SHIE
     cout << "Found DOUBLE:" << to_string(currentFloat) << endl;    
 } 
  
-[0-9][_0-9]*([eE][+-]?[0-9][_0-9]*)?(f64|f32)? { 
+[0-9][_0-9]*((([eE][+-]?[0-9][_0-9]*)(f64|f32)?)|(([eE][+-]?[0-9][_0-9]*)?(f64|f32))) { 
     string number_string = yytext;
     removeCharacterFromString(number_string, '_'); 
     removeSubstringFromString(number_string, "f32");

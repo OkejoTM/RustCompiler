@@ -18,7 +18,7 @@
     <None Include="lexer.l" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lex.yy.cpp">
+    <ClCompile Include="..\..\..\..\winflex\lex.yy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
