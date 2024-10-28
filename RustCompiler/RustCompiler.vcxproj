@@ -22,7 +22,7 @@
     <None Include="lexer.l" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\winflex\lex.yy.cpp" />
+    <ClCompile Include="lex.yy.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
