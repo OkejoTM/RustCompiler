@@ -28,9 +28,26 @@
 
 %%
 
-Program: Function
+Program: ProgramMembers
 ;
 
+ProgramMember: Enum
+            | Function
+            | ConstStmt
+            | Struct
+            | Trait
+            | Impl
+            | Visibility Enum
+            | Visibility Function
+            | Visibility ConstStmt
+            | Visibility Struct
+            | Visibility Trait
+            | Visibility Impl
+            ;
+
+ProgramMembers: ProgramMember
+                | ProgramMembers ProgramMember
+                ;
 //--------------------Expressions---------------------
 
 
@@ -46,15 +63,74 @@ ExprList: ExprWithBlock
         ;
 
 //------------------ExprWithoutBlock-------------------
-ExprWithoutBlock: Literal              { $$ = $1; }
-                | OperatorExpr
+ExprWithoutBlock: Literal            
+                | ExprWithoutBlock '+' ExprWithoutBlock                         //Arithmetic
+                | ExprWithBlock '+' ExprWithoutBlock
+                | ExprWithoutBlock '+' ExprWithBlock
+                | ExprWithBlock '+' ExprWithBlock
+                | ExprWithoutBlock '-' ExprWithoutBlock
+                | ExprWithBlock '-' ExprWithoutBlock
+                | ExprWithoutBlock '-' ExprWithBlock
+                | ExprWithBlock '-' ExprWithBlock
+                | ExprWithoutBlock '*' ExprWithoutBlock
+                | ExprWithBlock '*' ExprWithoutBlock
+                | ExprWithoutBlock '*' ExprWithBlock
+                | ExprWithBlock '*' ExprWithBlock
+                | ExprWithoutBlock '/' ExprWithoutBlock
+                | ExprWithBlock '/' ExprWithoutBlock
+                | ExprWithoutBlock '/' ExprWithBlock
+                | ExprWithBlock '/' ExprWithBlock
+                | ExprWithoutBlock EQUAL ExprWithoutBlock                        //Comparison
+                | ExprWithoutBlock EQUAL ExprWithBlock
+                | ExprWithBlock EQUAL ExprWithoutBlock
+                | ExprWithBlock EQUAL ExprWithBlock
+                | ExprWithoutBlock NOT_EQUAL ExprWithoutBlock
+                | ExprWithoutBlock NOT_EQUAL ExprWithBlock
+                | ExprWithBlock NOT_EQUAL ExprWithoutBlock
+                | ExprWithBlock NOT_EQUAL ExprWithBlock
+                | ExprWithoutBlock '>' ExprWithoutBlock
+                | ExprWithoutBlock '>' ExprWithBlock
+                | ExprWithBlock '>' ExprWithoutBlock
+                | ExprWithBlock '>' ExprWithBlock
+                | ExprWithoutBlock '<' ExprWithoutBlock
+                | ExprWithoutBlock '<' ExprWithBlock
+                | ExprWithBlock '<' ExprWithoutBlock
+                | ExprWithBlock '<' ExprWithBlock
+                | ExprWithoutBlock GREATER_EQUAL ExprWithoutBlock
+                | ExprWithoutBlock GREATER_EQUAL ExprWithBlock
+                | ExprWithBlock GREATER_EQUAL ExprWithoutBlock
+                | ExprWithBlock GREATER_EQUAL ExprWithBlock
+                | ExprWithoutBlock LESS_EQUAL ExprWithoutBlock
+                | ExprWithoutBlock LESS_EQUAL ExprWithBlock
+                | ExprWithBlock LESS_EQUAL ExprWithoutBlock
+                | ExprWithBlock LESS_EQUAL ExprWithBlock
+                | ExprWithBlock '?'                               //ErrorPropagation
+                | ExprWithoutBlock '?'
+                | '-' ExprWithBlock %prec UMINUS                  //Negation
+                | '-' ExprWithoutBlock %prec UMINUS
+                | '!' ExprWithBlock
+                | '!' ExprWithoutBlock
+                | ExprWithBlock OR ExprWithBlock                               //Boolean
+                | ExprWithoutBlock OR ExprWithBlock
+                | ExprWithBlock OR ExprWithoutBlock
+                | ExprWithoutBlock OR ExprWithoutBlock
+                | ExprWithBlock AND ExprWithBlock
+                | ExprWithoutBlock AND ExprWithBlock
+                | ExprWithBlock AND ExprWithoutBlock
+                | ExprWithoutBlock AND ExprWithoutBlock                           //Assignment
+                | ExprWithoutBlock '=' ExprWithBlock
+                | ExprWithoutBlock '=' ExprWithoutBlock
                 | BREAK ExprWithBlock
                 | BREAK ExprWithoutBlock
                 | BREAK
                 | CONTINUE
                 | '(' ExprWithBlock ')'
                 | '(' ExprWithoutBlock ')'
-                | ArrayExpr
+                | '[' ExprList_final ']'
+                | '[' ExprWithBlock ';' ExprWithBlock ']'
+                | '[' ExprWithoutBlock ';' ExprWithBlock ']'
+                | '[' ExprWithBlock ';' ExprWithoutBlock ']'
+                | '[' ExprWithoutBlock ';' ExprWithoutBlock ']'
                 | ExprWithBlock '[' ExprWithBlock ']'                    //Index
                 | ExprWithoutBlock '[' ExprWithBlock ']'
                 | ExprWithBlock '[' ExprWithoutBlock ']'
@@ -78,73 +154,6 @@ Literal: CHAR_LITERAL      //expr
        | TRUE
        | FALSE
        ;
-
-OperatorExpr: ExprWithoutBlock '+' ExprWithoutBlock                         //Arithmetic
-            | ExprWithBlock '+' ExprWithoutBlock
-            | ExprWithoutBlock '+' ExprWithBlock
-            | ExprWithBlock '+' ExprWithBlock
-            | ExprWithoutBlock '-' ExprWithoutBlock
-            | ExprWithBlock '-' ExprWithoutBlock
-            | ExprWithoutBlock '-' ExprWithBlock
-            | ExprWithBlock '-' ExprWithBlock
-            | ExprWithoutBlock '*' ExprWithoutBlock
-            | ExprWithBlock '*' ExprWithoutBlock
-            | ExprWithoutBlock '*' ExprWithBlock
-            | ExprWithBlock '*' ExprWithBlock
-            | ExprWithoutBlock '/' ExprWithoutBlock
-            | ExprWithBlock '/' ExprWithoutBlock
-            | ExprWithoutBlock '/' ExprWithBlock
-            | ExprWithBlock '/' ExprWithBlock
-            | ExprWithoutBlock EQUAL ExprWithoutBlock                        //Comparison
-            | ExprWithoutBlock EQUAL ExprWithBlock
-            | ExprWithBlock EQUAL ExprWithoutBlock
-            | ExprWithBlock EQUAL ExprWithBlock
-            | ExprWithoutBlock NOT_EQUAL ExprWithoutBlock
-            | ExprWithoutBlock NOT_EQUAL ExprWithBlock
-            | ExprWithBlock NOT_EQUAL ExprWithoutBlock
-            | ExprWithBlock NOT_EQUAL ExprWithBlock
-            | ExprWithoutBlock '>' ExprWithoutBlock
-            | ExprWithoutBlock '>' ExprWithBlock
-            | ExprWithBlock '>' ExprWithoutBlock
-            | ExprWithBlock '>' ExprWithBlock
-            | ExprWithoutBlock '<' ExprWithoutBlock
-            | ExprWithoutBlock '<' ExprWithBlock
-            | ExprWithBlock '<' ExprWithoutBlock
-            | ExprWithBlock '<' ExprWithBlock
-            | ExprWithoutBlock GREATER_EQUAL ExprWithoutBlock
-            | ExprWithoutBlock GREATER_EQUAL ExprWithBlock
-            | ExprWithBlock GREATER_EQUAL ExprWithoutBlock
-            | ExprWithBlock GREATER_EQUAL ExprWithBlock
-            | ExprWithoutBlock LESS_EQUAL ExprWithoutBlock
-            | ExprWithoutBlock LESS_EQUAL ExprWithBlock
-            | ExprWithBlock LESS_EQUAL ExprWithoutBlock
-            | ExprWithBlock LESS_EQUAL ExprWithBlock
-            | ExprWithBlock '?'                               //ErrorPropagation
-            | ExprWithoutBlock '?'
-            | '-' ExprWithBlock %prec UMINUS                  //Negation
-            | '-' ExprWithoutBlock %prec UMINUS
-            | '!' ExprWithBlock
-            | '!' ExprWithoutBlock
-            | ExprWithBlock OR ExprWithBlock                               //Boolean
-            | ExprWithoutBlock OR ExprWithBlock
-            | ExprWithBlock OR ExprWithoutBlock
-            | ExprWithoutBlock OR ExprWithoutBlock
-            | ExprWithBlock AND ExprWithBlock
-            | ExprWithoutBlock AND ExprWithBlock
-            | ExprWithBlock AND ExprWithoutBlock
-            | ExprWithoutBlock AND ExprWithoutBlock
-            | ExprWithBlock '=' ExprWithBlock                             //Assignment
-            | ExprWithoutBlock '=' ExprWithBlock
-            | ExprWithBlock '=' ExprWithoutBlock
-            | ExprWithoutBlock '=' ExprWithoutBlock
-            ;
-
-ArrayExpr: '[' ExprList_final ']'
-         | '[' ExprWithBlock ';' ExprWithBlock ']'
-         | '[' ExprWithoutBlock ';' ExprWithBlock ']'
-         | '[' ExprWithBlock ';' ExprWithoutBlock ']'
-         | '[' ExprWithoutBlock ';' ExprWithoutBlock ']'
-         ;
 
 RangeExpr: ExprWithBlock RANGE ExprWithBlock
          | ExprWithoutBlock RANGE ExprWithBlock
@@ -201,10 +210,7 @@ Stmt: ';'
     | ExprWithoutBlock ';'
     | ExprWithBlock ';'             
     | LetStmt
-    | DeclarationStmt
-    | Visibility DeclarationStmt
     ;
-
 
 LetStmt: LET ID ':' Type '=' ExprWithBlock ';'
        | LET ID ':' Type '=' ExprWithoutBlock ';'
@@ -219,15 +225,6 @@ LetStmt: LET ID ':' Type '=' ExprWithBlock ';'
        | LET ID ':' Type ';'
        | LET ID ';'
        ;
-
-//---------DeclarationStatement---------
-DeclarationStmt: Enum
-         | Function
-         | ConstStmt
-         | Struct
-         | Trait
-         | Impl
-         ;
 
 //----Enum----
 Enum: ENUM ID '{' EnumItems '}'
