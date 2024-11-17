@@ -1,5 +1,6 @@
+#line 1 "lexer.flex.cpp"
 
-#line 2 "lex.yy.c"
+#line 3 "lexer.flex.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -799,13 +800,13 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "<stdin>"
+#line 1 "lexer.l"
 #define YY_NO_UNISTD_H 1
  
  
  
  
-#line 14 "<stdin>"
+#line 14 "lexer.l"
     #include <string>
     #include <algorithm>
     #include <charconv>
@@ -819,8 +820,8 @@ char *yytext;
     void removeCharacterFromString(string& str, char ch); 
     void removeSubstringFromString(string& str, const string& substr);
     void convertCharacterCodeToString(char characterCode[], int startPosition, char *result); 
-#line 822 "lex.yy.c"
-#line 823 "lex.yy.c"
+#line 823 "lexer.flex.cpp"
+#line 824 "lexer.flex.cpp"
 
 #define INITIAL 0
 #define CHAR 1
@@ -828,13 +829,10 @@ char *yytext;
 #define ML_COMMENT 3
 #define SHIELD_STRING 4
 
-#ifndef YY_NO_UNISTD_H
-/* Special case for "unistd.h", since it is non-ANSI. We include it way
- * down here because we want the user's section 1 to have been scanned first.
- * The user has a chance to override it with an option.
- */
-#include <unistd.h>
-#endif
+/*windows compatibility case*/
+#include <io.h>
+#define isatty _isatty
+#define fileno _fileno
     
 #ifndef YY_EXTRA_TYPE
 #define YY_EXTRA_TYPE void *
@@ -1041,9 +1039,9 @@ YY_DECL
 		}
 
 	{
-#line 29 "<stdin>"
+#line 29 "lexer.l"
 
-#line 31 "<stdin>"
+#line 31 "lexer.l"
  
  
     string currentString; 
@@ -1054,7 +1052,7 @@ YY_DECL
     int octothorpeCount = 0;     
  
  
-#line 1057 "lex.yy.c"
+#line 1055 "lexer.flex.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1120,528 +1118,528 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 41 "<stdin>"
+#line 41 "lexer.l"
 { } 
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 42 "<stdin>"
+#line 42 "lexer.l"
 { } 
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 44 "<stdin>"
+#line 44 "lexer.l"
 { cout << "Found KW_AS: " << yytext << endl; } 
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 45 "<stdin>"
+#line 45 "lexer.l"
 { cout << "Found KW_BREAK: " << yytext << endl; } 
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 46 "<stdin>"
+#line 46 "lexer.l"
 { cout << "Found KW_CONST: " << yytext << endl; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 47 "<stdin>"
+#line 47 "lexer.l"
 { cout << "Found KW_CONTINUE: " << yytext << endl; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 48 "<stdin>"
+#line 48 "lexer.l"
 { cout << "Found KW_CRATE: " << yytext << endl; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 49 "<stdin>"
+#line 49 "lexer.l"
 { cout << "Found KW_ELSE: " << yytext << endl; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 50 "<stdin>"
+#line 50 "lexer.l"
 { cout << "Found KW_ENUM: " << yytext << endl; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 51 "<stdin>"
+#line 51 "lexer.l"
 { cout << "Found KW_EXTERN: " << yytext << endl; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 52 "<stdin>"
+#line 52 "lexer.l"
 { cout << "Found KW_FALSE: " << yytext << endl; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 53 "<stdin>"
+#line 53 "lexer.l"
 { cout << "Found KW_FN: " << yytext << endl; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 54 "<stdin>"
+#line 54 "lexer.l"
 { cout << "Found KW_FOR: " << yytext << endl; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 55 "<stdin>"
+#line 55 "lexer.l"
 { cout << "Found KW_IF: " << yytext << endl; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 56 "<stdin>"
+#line 56 "lexer.l"
 { cout << "Found KW_IMPL: " << yytext << endl; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 57 "<stdin>"
+#line 57 "lexer.l"
 { cout << "Found KW_IN: " << yytext << endl; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 58 "<stdin>"
+#line 58 "lexer.l"
 { cout << "Found KW_LET: " << yytext << endl; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 59 "<stdin>"
+#line 59 "lexer.l"
 { cout << "Found KW_LOOP: " << yytext << endl; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 60 "<stdin>"
+#line 60 "lexer.l"
 { cout << "Found KW_MATCH: " << yytext << endl; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 61 "<stdin>"
+#line 61 "lexer.l"
 { cout << "Found KW_MOD: " << yytext << endl; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 62 "<stdin>"
+#line 62 "lexer.l"
 { cout << "Found KW_MOVE: " << yytext << endl; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 63 "<stdin>"
+#line 63 "lexer.l"
 { cout << "Found KW_MUT: " << yytext << endl; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 64 "<stdin>"
+#line 64 "lexer.l"
 { cout << "Found KW_PUB: " << yytext << endl; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 65 "<stdin>"
+#line 65 "lexer.l"
 { cout << "Found KW_REF: " << yytext << endl; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 66 "<stdin>"
+#line 66 "lexer.l"
 { cout << "Found KW_RETURN: " << yytext << endl; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 67 "<stdin>"
+#line 67 "lexer.l"
 { cout << "Found KW_SELFVALUE: " << yytext << endl; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 68 "<stdin>"
+#line 68 "lexer.l"
 { cout << "Found KW_SELFTYPE: " << yytext << endl; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 69 "<stdin>"
+#line 69 "lexer.l"
 { cout << "Found KW_STATIC: " << yytext << endl; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 70 "<stdin>"
+#line 70 "lexer.l"
 { cout << "Found KW_STRUCT: " << yytext << endl; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 71 "<stdin>"
+#line 71 "lexer.l"
 { cout << "Found KW_SUPER: " << yytext << endl; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 72 "<stdin>"
+#line 72 "lexer.l"
 { cout << "Found KW_TRAIT: " << yytext << endl; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 73 "<stdin>"
+#line 73 "lexer.l"
 { cout << "Found KW_TRUE: " << yytext << endl; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 74 "<stdin>"
+#line 74 "lexer.l"
 { cout << "Found KW_TYPE: " << yytext << endl; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 75 "<stdin>"
+#line 75 "lexer.l"
 { cout << "Found KW_UNSAFE: " << yytext << endl; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 76 "<stdin>"
+#line 76 "lexer.l"
 { cout << "Found KW_USE: " << yytext << endl; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 77 "<stdin>"
+#line 77 "lexer.l"
 { cout << "Found KW_WHERE: " << yytext << endl; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 78 "<stdin>"
+#line 78 "lexer.l"
 { cout << "Found KW_WHILE: " << yytext << endl; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 81 "<stdin>"
+#line 81 "lexer.l"
 { cout << "Found TYPE_BOOL: " << yytext << endl; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 82 "<stdin>"
+#line 82 "lexer.l"
 { cout << "Found TYPE_I32: " << yytext << endl; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 83 "<stdin>"
+#line 83 "lexer.l"
 { cout << "Found TYPE_I64: " << yytext << endl; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 84 "<stdin>"
+#line 84 "lexer.l"
 { cout << "Found TYPE_F32: " << yytext << endl; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 85 "<stdin>"
+#line 85 "lexer.l"
 { cout << "Found TYPE_F64: " << yytext << endl; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 86 "<stdin>"
+#line 86 "lexer.l"
 { cout << "Found TYPE_STRING: " << yytext << endl; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 87 "<stdin>"
+#line 87 "lexer.l"
 { cout << "Found TYPE_CHAR: " << yytext << endl; }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 90 "<stdin>"
+#line 90 "lexer.l"
 { cout << "Found OPERATOR_PLUS: " << yytext << endl; }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 91 "<stdin>"
+#line 91 "lexer.l"
 { cout << "Found OPERATOR_MINUS: " << yytext << endl; }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 92 "<stdin>"
+#line 92 "lexer.l"
 { cout << "Found OPERATOR_MUL: " << yytext << endl; }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 93 "<stdin>"
+#line 93 "lexer.l"
 { cout << "Found OPERATOR_DIV: " << yytext << endl; }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 94 "<stdin>"
+#line 94 "lexer.l"
 { cout << "Found OPERATOR_MOD: " << yytext << endl; }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 96 "<stdin>"
+#line 96 "lexer.l"
 { cout << "Found OPERATOR_ASSIGNMENT: " << yytext << endl; }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 97 "<stdin>"
+#line 97 "lexer.l"
 { cout << "Found OPERATOR_EQUAL: " << yytext << endl; }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 98 "<stdin>"
+#line 98 "lexer.l"
 { cout << "Found OPERATOR_NOT_EQUAL: " << yytext << endl; }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 99 "<stdin>"
+#line 99 "lexer.l"
 { cout << "Found OPERATOR_LESS: " << yytext << endl; }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 100 "<stdin>"
+#line 100 "lexer.l"
 { cout << "Found OPERATOR_MORE: " << yytext << endl; }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 101 "<stdin>"
+#line 101 "lexer.l"
 { cout << "Found OPERATOR_LESS_OR_EQUAL: " << yytext << endl; }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 102 "<stdin>"
+#line 102 "lexer.l"
 { cout << "Found OPERATOR_MORE_OR_EQUAL: " << yytext << endl; }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 104 "<stdin>"
+#line 104 "lexer.l"
 { cout << "Found OPERATOR_AMPERSAND: " << yytext << endl; }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 105 "<stdin>"
+#line 105 "lexer.l"
 { cout << "Found OPERATOR_BIT_OR: " << yytext << endl; }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 106 "<stdin>"
+#line 106 "lexer.l"
 { cout << "Found OPERATOR_BIT_NOT: " << yytext << endl; }
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 107 "<stdin>"
+#line 107 "lexer.l"
 { cout << "Found OPERATOR_BIT_XOR: " << yytext << endl; }
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 108 "<stdin>"
+#line 108 "lexer.l"
 { cout << "Found OPERATOR_BIT_LEFT_SHIFT: " << yytext << endl; }
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 109 "<stdin>"
+#line 109 "lexer.l"
 { cout << "Found OPERATOR_BIT_RIGHT_SHIFT: " << yytext << endl; }
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 112 "<stdin>"
+#line 112 "lexer.l"
 { cout << "Found OPERATOR_AND: " << yytext << endl; }
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 113 "<stdin>"
+#line 113 "lexer.l"
 { cout << "Found OPERATOR_OR: " << yytext << endl; } 
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 115 "<stdin>"
+#line 115 "lexer.l"
 { cout << "Found OPERATOR_PLUS_ASSIGNMENT: " << yytext << endl; }
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 116 "<stdin>"
+#line 116 "lexer.l"
 { cout << "Found OPERATOR_MINUS_ASSIGNMENT: " << yytext << endl; }
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 117 "<stdin>"
+#line 117 "lexer.l"
 { cout << "Found OPERATOR_MUL_ASSIGNMENT: " << yytext << endl; }
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 119 "<stdin>"
+#line 119 "lexer.l"
 { cout << "Found OPERATOR_DIV_ASSIGNMENT: " << yytext << endl; }
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 120 "<stdin>"
+#line 120 "lexer.l"
 { cout << "Found OPERATOR_MOD_ASSIGNMENT: " << yytext << endl; }
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 121 "<stdin>"
+#line 121 "lexer.l"
 { cout << "Found OPERATOR_BIT_AND_ASSIGNMENT: " << yytext << endl; }
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 122 "<stdin>"
+#line 122 "lexer.l"
 { cout << "Found OPERATOR_BIT_OR_ASSIGNMENT: " << yytext << endl; }
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 123 "<stdin>"
+#line 123 "lexer.l"
 { cout << "Found OPERATOR_BIT_XOR_ASSIGNMENT: " << yytext << endl; }
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 124 "<stdin>"
+#line 124 "lexer.l"
 { cout << "Found OPERATOR_BIT_LEFT_SHIFT_ASSIGNMENT: " << yytext << endl; }
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 125 "<stdin>"
+#line 125 "lexer.l"
 { cout << "Found OPERATOR_BIT_RIGHT_SHIFT_ASSIGNMENT: " << yytext << endl; }
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 128 "<stdin>"
+#line 128 "lexer.l"
 { cout << "Found OPERATOR_POINT: " << yytext << endl; }
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 129 "<stdin>"
+#line 129 "lexer.l"
 { cout << "Found OPERATOR_RANGE: " << yytext << endl; }
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 130 "<stdin>"
+#line 130 "lexer.l"
 { cout << "Found OPERATOR_RANGE_ASSIGNMENT: " << yytext << endl; }
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 131 "<stdin>"
+#line 131 "lexer.l"
 { cout << "Found OPERATOR_ARROW: " << yytext << endl; }
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 134 "<stdin>"
+#line 134 "lexer.l"
 { cout << "Found LEFT_ROUND_BRACKET: " << yytext << endl; }
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 135 "<stdin>"
+#line 135 "lexer.l"
 { cout << "Found RIGHT_ROUND_BRACKET: " << yytext << endl; }
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 136 "<stdin>"
+#line 136 "lexer.l"
 { cout << "Found LEFT_SQUARE_BRACKET: " << yytext << endl; }
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 137 "<stdin>"
+#line 137 "lexer.l"
 { cout << "Found RIGHT_SQUARE_BRACKET: " << yytext << endl; }
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 138 "<stdin>"
+#line 138 "lexer.l"
 { cout << "Found LEFT_FIGURE_BRACKET: " << yytext << endl; }
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 139 "<stdin>"
+#line 139 "lexer.l"
 { cout << "Found RIGHT_FIGURE_BRACKET: " << yytext << endl; }
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 142 "<stdin>"
+#line 142 "lexer.l"
 { cout << "Found COMMA: " << yytext << endl; }
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 143 "<stdin>"
+#line 143 "lexer.l"
 { cout << "Found SEMICOLON: " << yytext << endl; }
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 144 "<stdin>"
+#line 144 "lexer.l"
 { cout << "Found COLON: " << yytext << endl; }
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 145 "<stdin>"
+#line 145 "lexer.l"
 { cout << "Found TWO_COLON: " << yytext << endl; }
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 148 "<stdin>"
+#line 148 "lexer.l"
 { currentCommentString.clear(); BEGIN(ML_COMMENT); } 
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 149 "<stdin>"
+#line 149 "lexer.l"
 { currentCommentString += yytext; } 
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 150 "<stdin>"
+#line 150 "lexer.l"
 { currentCommentString += yytext; } 
 	YY_BREAK
 case 92:
 /* rule 92 can match eol */
 YY_RULE_SETUP
-#line 151 "<stdin>"
+#line 151 "lexer.l"
 { currentCommentString += yytext; } 
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 152 "<stdin>"
+#line 152 "lexer.l"
 { cout << "Found ML_COMMENT: " << currentCommentString << endl; BEGIN(INITIAL); } 
 	YY_BREAK
 case YY_STATE_EOF(ML_COMMENT):
-#line 153 "<stdin>"
+#line 153 "lexer.l"
 { cout << "ML_COMMENT Error\n"; BEGIN(INITIAL);} 
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 155 "<stdin>"
+#line 155 "lexer.l"
 { cout << "Found COMMENT: " << string{yytext + 2} << endl; } 
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 157 "<stdin>"
+#line 157 "lexer.l"
 { currentString.clear(); BEGIN(STRING); } 
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 158 "<stdin>"
+#line 158 "lexer.l"
 { currentString += yytext; } 
 	YY_BREAK
 case 97:
 /* rule 97 can match eol */
 YY_RULE_SETUP
-#line 159 "<stdin>"
+#line 159 "lexer.l"
 { } 
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 160 "<stdin>"
+#line 160 "lexer.l"
 { currentString += "\n"; } 
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 161 "<stdin>"
+#line 161 "lexer.l"
 { currentString += "\r"; } 
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 162 "<stdin>"
+#line 162 "lexer.l"
 { currentString += "\t"; } 
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 163 "<stdin>"
+#line 163 "lexer.l"
 { currentString += "\0"; } 
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 164 "<stdin>"
+#line 164 "lexer.l"
 { currentString += "\\"; } 
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
-#line 165 "<stdin>"
+#line 165 "lexer.l"
 { currentString += "\""; } 
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 166 "<stdin>"
+#line 166 "lexer.l"
 { 
     char result[2]; 
     convertCharacterCodeToString(yytext, 3, result);   
@@ -1650,7 +1648,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 171 "<stdin>"
+#line 171 "lexer.l"
 { 
     char result[2]; 
     convertCharacterCodeToString(yytext, 2, result);   
@@ -1659,27 +1657,27 @@ YY_RULE_SETUP
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 176 "<stdin>"
+#line 176 "lexer.l"
 { cout << "Found STRING: " << currentString << " " << currentString.size() << endl; BEGIN(INITIAL);} 
 	YY_BREAK
 case YY_STATE_EOF(STRING):
-#line 177 "<stdin>"
+#line 177 "lexer.l"
 { cout << "STRING Error: there is no closing quotation mark\n"; BEGIN(INITIAL);} 
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
-#line 179 "<stdin>"
+#line 179 "lexer.l"
 {currentString.clear(); octothorpeCount = strlen(yytext) - 2; BEGIN(SHIELD_STRING);} 
 	YY_BREAK
 case 108:
 /* rule 108 can match eol */
 YY_RULE_SETUP
-#line 180 "<stdin>"
+#line 180 "lexer.l"
 { currentString += yytext; } 
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-#line 181 "<stdin>"
+#line 181 "lexer.l"
 { 
     int closingOctothorpeCount = strlen(yytext) - 1; 
     if (closingOctothorpeCount == octothorpeCount) { 
@@ -1696,17 +1694,17 @@ YY_RULE_SETUP
 } 
 	YY_BREAK
 case YY_STATE_EOF(SHIELD_STRING):
-#line 195 "<stdin>"
+#line 195 "lexer.l"
 { cout << "SHIELD_STRING Error: there is no closing quotation mark\n"; BEGIN(INITIAL);} 
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 198 "<stdin>"
+#line 198 "lexer.l"
 { currentString.clear(); BEGIN(CHAR); } 
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-#line 199 "<stdin>"
+#line 199 "lexer.l"
 { 
     char result[2]; 
     convertCharacterCodeToString(yytext, 2, result);     
@@ -1717,47 +1715,47 @@ YY_RULE_SETUP
 case 112:
 /* rule 112 can match eol */
 YY_RULE_SETUP
-#line 205 "<stdin>"
+#line 205 "lexer.l"
 { currentString += yytext; } 
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 206 "<stdin>"
+#line 206 "lexer.l"
 {  currentString += "\\";  } 
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
-#line 207 "<stdin>"
+#line 207 "lexer.l"
 { currentString += "\n"; } 
 	YY_BREAK
 case 115:
 YY_RULE_SETUP
-#line 208 "<stdin>"
+#line 208 "lexer.l"
 { currentString += "\r"; } 
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-#line 209 "<stdin>"
+#line 209 "lexer.l"
 {  currentString += "\t"; } 
 	YY_BREAK
 case 117:
 YY_RULE_SETUP
-#line 210 "<stdin>"
+#line 210 "lexer.l"
 {  currentString += "\0" ; } 
 	YY_BREAK
 case 118:
 YY_RULE_SETUP
-#line 211 "<stdin>"
+#line 211 "lexer.l"
 {  currentString += "\'"; } 
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
-#line 212 "<stdin>"
+#line 212 "lexer.l"
 {  currentString += "\""; } 
 	YY_BREAK
 case 120:
 YY_RULE_SETUP
-#line 213 "<stdin>"
+#line 213 "lexer.l"
 { 
     char result[2]; 
     convertCharacterCodeToString(yytext, 3, result);   
@@ -1766,7 +1764,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 121:
 YY_RULE_SETUP
-#line 218 "<stdin>"
+#line 218 "lexer.l"
 { 
     if(currentString.size() == 1) { 
             cout << "Found CHAR: (" << currentString << ")" << endl; 
@@ -1779,7 +1777,7 @@ YY_RULE_SETUP
 } 
 	YY_BREAK
 case YY_STATE_EOF(CHAR):
-#line 228 "<stdin>"
+#line 228 "lexer.l"
 {
     cout << "CHAR Error: there is no closing quotation mark (" << currentString << ")" << endl; 
     BEGIN(INITIAL);
@@ -1787,7 +1785,7 @@ case YY_STATE_EOF(CHAR):
 	YY_BREAK
 case 122:
 YY_RULE_SETUP
-#line 234 "<stdin>"
+#line 234 "lexer.l"
 { 
     string number_string = yytext;
     removeCharacterFromString(number_string, '_'); 
@@ -1799,7 +1797,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 123:
 YY_RULE_SETUP
-#line 243 "<stdin>"
+#line 243 "lexer.l"
 {  
     string number_string = yytext;
     removeCharacterFromString(number_string, '_'); 
@@ -1811,7 +1809,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 124:
 YY_RULE_SETUP
-#line 252 "<stdin>"
+#line 252 "lexer.l"
 { 
     string number_string = yytext;
     removeCharacterFromString(number_string, '_'); 
@@ -1823,7 +1821,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 125:
 YY_RULE_SETUP
-#line 261 "<stdin>"
+#line 261 "lexer.l"
 { 
     string number_string = yytext;
     removeCharacterFromString(number_string, '_'); 
@@ -1835,7 +1833,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 126:
 YY_RULE_SETUP
-#line 270 "<stdin>"
+#line 270 "lexer.l"
 {     
     string number_string = yytext;
     removeCharacterFromString(number_string, '_'); 
@@ -1847,7 +1845,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 127:
 YY_RULE_SETUP
-#line 279 "<stdin>"
+#line 279 "lexer.l"
 { 
     string number_string = yytext;
     removeCharacterFromString(number_string, '_'); 
@@ -1859,30 +1857,30 @@ YY_RULE_SETUP
 	YY_BREAK
 case 128:
 YY_RULE_SETUP
-#line 288 "<stdin>"
+#line 288 "lexer.l"
 { cout << "Found IDENTIFIER: " <<  yytext << endl;} 
 	YY_BREAK
 case 129:
 YY_RULE_SETUP
-#line 289 "<stdin>"
+#line 289 "lexer.l"
 { cout << "Found MACROS: " << yytext << endl;} 
 	YY_BREAK
 case 130:
 YY_RULE_SETUP
-#line 290 "<stdin>"
+#line 290 "lexer.l"
 { cout << "Error: incorrect IDENTIFIER" << endl; } 
 	YY_BREAK
 case 131:
 YY_RULE_SETUP
-#line 291 "<stdin>"
+#line 291 "lexer.l"
 { cout << "Error: incorrect character in code" << endl; } 
 	YY_BREAK
 case 132:
 YY_RULE_SETUP
-#line 293 "<stdin>"
+#line 293 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 1885 "lex.yy.c"
+#line 1883 "lexer.flex.cpp"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2900,7 +2898,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 293 "<stdin>"
+#line 293 "lexer.l"
 
  
 void convertCharacterCodeToString(char characterCode[], int startPosition, char *result) 
@@ -2922,24 +2920,3 @@ void removeCharacterFromString(string& str, char ch) {
    str.erase(newLast, str.end());
 }
 
-int main() { 
- 
-    //if (argc != 2) { 
-    //    printf("Filename is not found"); 
-    //    return 1; 
-    //} 
- 
-    //const char *filename= argv[1]; 
- 
-    //FILE *file = fopen(filename, "r"); 
-    //if (file == NULL) { 
-    //    printf("File opening error"); 
-    //    return 1; 
-    //} 
- 
-    //yyin = file; 
-    yylex(); 
-    //fclose(file); 
- 
-    return 0; 
-}

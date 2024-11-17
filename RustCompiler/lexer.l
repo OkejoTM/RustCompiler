@@ -309,25 +309,3 @@ void removeCharacterFromString(string& str, char ch) {
    const auto newLast = remove(str.begin(), str.end(), ch);
    str.erase(newLast, str.end());
 }
-
-int main() { 
- 
-    //if (argc != 2) { 
-    //    printf("Filename is not found"); 
-    //    return 1; 
-    //} 
- 
-    //const char *filename= argv[1]; 
- 
-    //FILE *file = fopen(filename, "r"); 
-    //if (file == NULL) { 
-    //    printf("File opening error"); 
-    //    return 1; 
-    //} 
- 
-    //yyin = file; 
-    yylex(); 
-    //fclose(file); 
- 
-    return 0; 
-}

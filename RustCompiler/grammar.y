@@ -22,10 +22,6 @@
 %nonassoc ')'
 
 
-%{
-#include tree_nodes.h
-%}
-
 %%
 
 Program: ProgramMembers
