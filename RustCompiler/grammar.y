@@ -1,3 +1,15 @@
+%{
+#include <cstdio>
+#include <iostream>
+
+void __cdecl yyerror(const char* s) {
+	std::cerr << s << std::endl;
+}
+
+int yylex();
+int yyparse();
+%}
+
 %token FOR LOOP IN IF ELSE WHILE LET MUT FN CONTINUE ENUM CONST STRUCT IMPL TRAIT PUB CRATE SELF SUPER
 %token ID
 
