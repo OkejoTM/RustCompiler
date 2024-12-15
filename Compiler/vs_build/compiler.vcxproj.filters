@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\tikom\source\Cplus\RustCompiler\Compiler\compiler\lex.yy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tikom\source\Cplus\RustCompiler\Compiler\compiler\tools\tools.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tikom\source\Cplus\RustCompiler\Compiler\compiler\classes_functions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\tikom\source\Cplus\RustCompiler\Compiler\compiler\unistd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tikom\source\Cplus\RustCompiler\Compiler\compiler\tools\tools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tikom\source\Cplus\RustCompiler\Compiler\compiler\classesnodes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\tikom\source\Cplus\RustCompiler\Compiler\compiler\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{B4AC4488-BF0B-334B-82F5-1CE42565D3E4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{CB1226CF-6D71-380C-A610-FD8F0F848345}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
