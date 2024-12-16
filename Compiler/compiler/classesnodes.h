@@ -46,17 +46,6 @@ public:
     int line = 0;
     
 
-    string className;
-    string methodName;
-    string fieldName;
-
-    string curClassName;
-    string curMethodName;
-    int localVarNum = -1;
-    bool isConst = false;
-    bool isMut = false;
-
-    
     void setLine(Node* node);
     void connectVerticesDots(string& s, int parentId, int childId);  
     void createVertexDot(string& s, int id, string name = "", string type = "", string value = "", string visibility = "",
@@ -80,7 +69,6 @@ public:
     };
     Type type;
     string *name;
-    bool isImpl = false;
 
     TypeNode *typeArr = NULL;
     ExprNode *exprArr = NULL;
@@ -139,7 +127,6 @@ public:
 
     TypeNode *typeNode = NULL;
 
-    int loopCounterVar = -1;
     
     static ExprNode *OperatorExpr(Type type, ExprNode *left, ExprNode *right);
 
@@ -290,7 +277,6 @@ public:
     ExprNode *expr = NULL;
     string *parentName;
 
-    string directory;
 
     static ItemNode *DeclarationEnum(Visibility visibility, EnumStmtNode *node);
 
