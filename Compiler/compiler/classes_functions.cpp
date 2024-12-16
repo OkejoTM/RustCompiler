@@ -745,13 +745,6 @@ ExprNode *ExprNode::DelObjectExpr(ExprNode *expr) {
 }
 
 // --- toDot, toXml функции ---
-//
-// Created by T0mmy on 28.01.2024.
-//
-
-#include "classesnodes.h"
-
-// --- toDot, toXml функции ---
 void ProgramNode::toDot(string& dot) {
 
     dot = "digraph rustProgram {\n";
